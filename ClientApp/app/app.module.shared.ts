@@ -9,6 +9,7 @@ import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
 import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { SearchComponent } from './components/search/search.component';
+//import { CommonModule } from './common/common.module';
 
 @NgModule({
     declarations: [
