@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { CognitiveService } from '../../common/services/cognitive.service';
+import { ImageResult } from '../../common/models/bingSearchResponse';
 
  @Component({
      selector: 'search',
@@ -6,7 +8,21 @@ import { Component } from '@angular/core';
      styleUrls: ['./search.component.css']
  })
  export class SearchComponent {
-     constructor() { 
-         console.log("SearchComponent constructor called!!")
+    searchResults: ImageResult[] | null;
+    isSearching = false;
+
+     constructor(private cognitiveService: CognitiveService) { 
      }
+
+     search(searchTerm: string) {
+        this.searchResults = null;
+        this.isSearching = true;
+
+        console.info("Search : " + searchTerm);
+
+        this.cognitiveService.searchImages(searchTerm).subscribe(result => {
+            this.searchResults = result.value;
+            this.isSearching = false;
+        });
+    }
  }

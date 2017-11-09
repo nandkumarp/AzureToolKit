@@ -4,4 +4,4 @@ import { AzureHttpClient } from './services/azureHttpClient';
 @NgModule({
     providers: [AzureHttpClient, CognitiveService]
 })
-export class CommonModule { }
+export class CommonServiceModule { }
