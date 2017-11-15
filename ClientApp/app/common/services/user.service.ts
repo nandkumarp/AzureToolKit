@@ -11,7 +11,7 @@ export class UserService {
     private originUrl: string;
     private aadUser: AADUser;
 
-    constructor(private http: Http, @Inject('ORIGIN_URL')originUrl: string) {
+    constructor(private http: Http, @Inject('BASE_URL') originUrl: string) {
         this.originUrl = originUrl;
     }
 
@@ -34,7 +34,6 @@ export class UserService {
                                 break;
                         }
                     });
-   
                     return user;
                 }
                 catch (Exception) {
@@ -44,6 +43,7 @@ export class UserService {
     }
     
     private handleError(error: any): Promise<any> {
+        console.log("Error!!!!!");
         console.error('An error occurred', error); // for demo purposes only
         return Promise.reject(error.message || error);
     }

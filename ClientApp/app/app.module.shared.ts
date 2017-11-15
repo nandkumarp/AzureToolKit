@@ -31,7 +31,7 @@ import { CommonServiceModule } from './common/common.module';
             { path: 'fetch-data', component: FetchDataComponent },
             { path: '**', redirectTo: 'home' }
         ])
-    ]
+       ]
 })
 export class AppModuleShared {
 }
