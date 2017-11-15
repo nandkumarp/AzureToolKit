@@ -9,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
     user: User;
 
-    constructor(private userService: UserService) { }
-
+    constructor(private userService: UserService) { 
+        console.log("Home Controller");
+    }
+    
     ngOnInit(): void {
-        this.userService.getUser().subscribe(user => this.user = user );
+        console.log("HomeController > getUser()");
+        //this.userService.getUser().subscribe(user => this.user = user );
     }
 }
