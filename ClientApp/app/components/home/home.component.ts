@@ -15,6 +15,6 @@ export class HomeComponent implements OnInit {
     
     ngOnInit(): void {
         console.log("HomeController > getUser()");
-        //this.userService.getUser().subscribe(user => this.user = user );
+        this.userService.getUser().subscribe(user => this.user = user );
     }
 }
