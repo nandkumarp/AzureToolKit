@@ -11,16 +11,19 @@
 
 <div *ngIf="searchResults">
     <h2><b>Selected Photo</b></h2>
+    
     <div class="currentItem card" *ngIf="currentAnalytics || isAnalyzing">
         <img src="{{currentItem?.thumbnailUrl}}" />
-        <div *ngIf="isAnalyzing">
-            <h4><b>Analysing Photo</b></h4>
-        </div>  
         <div *ngIf="!isAnalyzing">
-                <h4><b>{{currentAnalytics?.description.captions[0].text}}</b></h4>
+            <h4><b>{{currentAnalytics?.description.captions[0].text}}</b></h4>
             <div>
                 <span class="tag label" [ngClass]="{'label-default': tag.confidence >= .75, 'label-warning': tag.confidence >= .5 && tag.confidence < .75, 'label-danger': tag.confidence < .5}" *ngFor="let tag of currentAnalytics?.tags">{{tag.name}}</span>
             </div>
+            <button *ngIf="!currentItemSaved" (click)="saveImage()">Save Image</button>
+            <span *ngIf="currentItemSaved">Image Saved!</span>
+        </div>
+        <div *ngIf="isAnalyzing">
+            <h4>Analyzing Photo</h4>
         </div>
     </div>
     <h4 class="no-results" *ngIf="!currentAnalytics && !isAnalyzing">Select a photo to analyze it.</h4>

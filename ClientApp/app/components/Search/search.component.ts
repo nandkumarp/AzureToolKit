@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CognitiveService } from '../../common/services/cognitive.service';
+import { AzureToolkitService } from '../../common/services/azureToolkit.service';
 import { ImageResult } from '../../common/models/bingSearchResponse';
 import { ComputerVisionRequest, ComputerVisionResponse } from '../../common/models/computerVisionResponse';
 
@@ -14,8 +15,9 @@ import { ComputerVisionRequest, ComputerVisionResponse } from '../../common/mode
     currentAnalytics: ComputerVisionResponse | null;
     currentItem: ImageResult | null;
     isAnalyzing = false;
+    currentItemSaved: boolean = false;
 
-     constructor(private cognitiveService: CognitiveService) { 
+     constructor(private cognitiveService: CognitiveService, private azureToolkitService: AzureToolkitService) { 
      }
 
      search(searchTerm: string) {
@@ -31,6 +33,7 @@ import { ComputerVisionRequest, ComputerVisionResponse } from '../../common/mode
 
     analyze(result: ImageResult) {
         this.currentItem = result;
+        this.currentItemSaved = false;
         this.currentAnalytics = null;
         this.isAnalyzing = true;
         this.cognitiveService.analyzeImage({ url: result.thumbnailUrl } as ComputerVisionRequest).subscribe(result => {
@@ -39,5 +42,16 @@ import { ComputerVisionRequest, ComputerVisionResponse } from '../../common/mode
             this.isAnalyzing = false;
         });
         window.scroll(0, 0);
+    }
+
+    saveImage() {
+        let transferObject = {
+            url: this.currentItem.thumbnailUrl,
+            encodingFormat: this.currentItem.encodingFormat,
+            id: this.currentItem.imageId
+        }
+        this.azureToolkitService.saveImage(transferObject).subscribe(saveSuccessful => {
+            this.currentItemSaved = saveSuccessful;
+        });
     }
  }
