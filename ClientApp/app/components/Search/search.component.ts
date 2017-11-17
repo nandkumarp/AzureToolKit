@@ -53,6 +53,10 @@ import { UserService } from '../../common/services/user.service';
         
         console.log("SaveImage called");
         
+        console.log(this.user);
+        console.log(this.currentItem);
+        console.log(this.currentAnalytics);
+        
         let transferObject: ImagePostRequest = {
             userId: this.user.userId,
             url: this.currentItem.thumbnailUrl,
@@ -61,6 +65,8 @@ import { UserService } from '../../common/services/user.service';
             description: this.currentAnalytics.description.captions[0].text,
             tags: this.currentAnalytics.tags.map(tag => tag.name)
         };
+
+
         this.azureToolkitService.saveImage(transferObject).subscribe(saveSuccessful => {
             this.currentItemSaved = saveSuccessful;
         });
