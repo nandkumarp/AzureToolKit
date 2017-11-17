@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../common/services/user.service';
 import { User } from '../../common/models/user';
+import { AzureToolkitService } from '../../common/services/azureToolkit.service';
+import { SavedImage } from '../../common/models/savedImage';
 
 @Component({
     selector: 'gallery',
@@ -9,10 +11,17 @@ import { User } from '../../common/models/user';
 })
 export class GalleryComponent implements OnInit {
     user: User;
+    savedImages: SavedImage[] | null = null;
 
-    constructor(private userService: UserService) { }
+    constructor(private userService: UserService, private azureToolkitService: AzureToolkitService) { }
 
     ngOnInit(): void {
-        this.userService.getUser().subscribe(user => this.user = user );
+        this.userService.getUser().subscribe(user => {
+            this.user = user;
+   
+            this.azureToolkitService.getImages(this.user.userId).subscribe(images => {
+                this.savedImages = images;
+            })
+        });
     }
 }
