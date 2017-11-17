@@ -74,7 +74,10 @@ import { UserService } from '../../common/services/user.service';
 
     ngOnInit(): void {
         console.log("SearchController > getUser()");
-        this.userService.getUser().subscribe(user => this.user = user );
+        this.userService.getUser().subscribe(user => {
+            this.user = user;
+            console.log("inner user >> " + user);
+        });
         console.log(this.user);
     }
  }
