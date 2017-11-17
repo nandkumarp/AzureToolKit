@@ -53,10 +53,6 @@ import { UserService } from '../../common/services/user.service';
         
         console.log("SaveImage called");
         
-        console.log(this.user);
-        console.log(this.currentItem);
-        console.log(this.currentAnalytics);
-        
         let transferObject: ImagePostRequest = {
             userId: this.user.userId,
             url: this.currentItem.thumbnailUrl,
@@ -76,8 +72,6 @@ import { UserService } from '../../common/services/user.service';
         console.log("SearchController > getUser()");
         this.userService.getUser().subscribe(user => {
             this.user = user;
-            console.log("inner user >> " + user);
         });
-        console.log(this.user);
     }
  }

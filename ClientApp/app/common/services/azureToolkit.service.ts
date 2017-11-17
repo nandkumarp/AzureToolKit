@@ -14,7 +14,9 @@ export class AzureToolkitService {
     }
 
     public saveImage(imagePostRequest: ImagePostRequest): Observable<boolean> {
-        return this.http.post('${this.originUrl}/api/images', imagePostRequest)
+        console.log(this.originUrl + "api/images");
+        
+        return this.http.post(this.originUrl + "api/images", imagePostRequest)
             .map(response => {
                 return response.ok;
             }).catch(this.handleError);
