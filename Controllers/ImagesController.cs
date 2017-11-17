@@ -57,6 +57,13 @@ namespace WebApplicationBasic.Controllers
 
              return Ok();
         }
+
+        [HttpGet("{userId}")]
+        public IActionResult GetImages(string userID)
+        {
+            var images = _context.SavedImages.Where(image => image.UserId == userID);
+            return Ok(images);
+        }
     }
 
     public class ImagePostRequest
