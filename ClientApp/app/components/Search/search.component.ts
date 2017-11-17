@@ -1,24 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, OnInit  } from '@angular/core';
 import { CognitiveService } from '../../common/services/cognitive.service';
 import { AzureToolkitService } from '../../common/services/azureToolkit.service';
 import { ImageResult } from '../../common/models/bingSearchResponse';
 import { ComputerVisionRequest, ComputerVisionResponse } from '../../common/models/computerVisionResponse';
+import { ImagePostRequest } from '../../common/models/imagePostRequest';
+import { User } from '../../common/models/user';
+import { UserService } from '../../common/services/user.service';
 
  @Component({
      selector: 'search',
      templateUrl: './search.component.html',
      styleUrls: ['./search.component.css']
  })
- export class SearchComponent {
+ export class SearchComponent implements OnInit {
     searchResults: ImageResult[] | null;
     isSearching = false;
     currentAnalytics: ComputerVisionResponse | null;
-    currentItem: ImageResult | null;
+    currentItem: ImageResult;
     isAnalyzing = false;
     currentItemSaved: boolean = false;
+    user: User;
 
-     constructor(private cognitiveService: CognitiveService, private azureToolkitService: AzureToolkitService) { 
-     }
+    constructor(private userService: UserService, private cognitiveService: CognitiveService, private azureToolkitService: AzureToolkitService) { 
+    }
 
      search(searchTerm: string) {
         this.searchResults = null;
@@ -45,16 +49,26 @@ import { ComputerVisionRequest, ComputerVisionResponse } from '../../common/mode
     }
 
     saveImage() {
-        if (this.currentItem)
-        {
-            let transferObject = {
-                url: this.currentItem.thumbnailUrl,
-                encodingFormat: this.currentItem.encodingFormat,
-                id: this.currentItem.imageId
-            }
-            this.azureToolkitService.saveImage(transferObject).subscribe(saveSuccessful => {
-                this.currentItemSaved = saveSuccessful;
-            });
-        }
+        if (this.currentAnalytics == null) return;
+        
+        console.log("SaveImage called");
+        
+        let transferObject: ImagePostRequest = {
+            userId: this.user.userId,
+            url: this.currentItem.thumbnailUrl,
+            encodingFormat: this.currentItem.encodingFormat,
+            id: this.currentItem.imageId,
+            description: this.currentAnalytics.description.captions[0].text,
+            tags: this.currentAnalytics.tags.map(tag => tag.name)
+        };
+        this.azureToolkitService.saveImage(transferObject).subscribe(saveSuccessful => {
+            this.currentItemSaved = saveSuccessful;
+        });
+    }
+
+    ngOnInit(): void {
+        console.log("SearchController > getUser()");
+        this.userService.getUser().subscribe(user => this.user = user );
+        console.log(this.user);
     }
  }
