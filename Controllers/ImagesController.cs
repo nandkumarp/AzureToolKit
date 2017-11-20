@@ -6,6 +6,8 @@ using System.Net;
 using WebApplicationBasic.Models;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Azure.Search;
+using Microsoft.Azure.Search.Models;
 
 namespace WebApplicationBasic.Controllers
 {
@@ -63,6 +65,20 @@ namespace WebApplicationBasic.Controllers
         {
             var images = _context.SavedImages.Where(image => image.UserId == userID);
             return Ok(images);
+        }
+
+        [HttpGet("search/{userId}/{term}")]
+        public IActionResult SearchImages(string userId, string term)
+        {
+                string searchServiceName ="azuretoolkit";
+                string queryApiKey = "10EE4E81CEE1F76D496941629B1E0D11";
+
+                SearchIndexClient indexClient = new SearchIndexClient(searchServiceName, "description", new SearchCredentials(queryApiKey));
+
+                SearchParameters parameters = new SearchParameters() { Filter = $"UserId eq '{userId}'" };
+                DocumentSearchResult<SavedImage> results = indexClient.Documents.Search<SavedImage>(term, parameters);
+
+                return Ok(results.Results.Select((savedImage) => savedImage.Document));
         }
     }
 

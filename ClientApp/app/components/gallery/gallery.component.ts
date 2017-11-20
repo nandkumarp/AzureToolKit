@@ -12,6 +12,7 @@ import { SavedImage } from '../../common/models/savedImage';
 export class GalleryComponent implements OnInit {
     user: User;
     savedImages: SavedImage[] | null = null;
+    searchResults: SavedImage[] | null;
 
     constructor(private userService: UserService, private azureToolkitService: AzureToolkitService) { }
 
@@ -22,6 +23,14 @@ export class GalleryComponent implements OnInit {
             this.azureToolkitService.getImages(this.user.userId).subscribe(images => {
                 this.savedImages = images;
             })
+        });
+    }
+
+    search(searchTerm: string) {
+        this.searchResults = null;
+   
+        this.azureToolkitService.searchImage(this.user.userId, searchTerm).subscribe(result => {
+            this.searchResults = result;
         });
     }
 }
