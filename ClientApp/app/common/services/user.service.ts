@@ -16,10 +16,9 @@ export class UserService {
     }
 
     public getUser(): Observable<User> {
-        console.log(this.originUrl + ".auth/me");
 
         return this.http.get(this.originUrl + ".auth/me")
-            .map(response => {
+        .map(response => {
                 try {
                     this.aadUser = response.json()[0] as AADUser;
    
@@ -45,7 +44,6 @@ export class UserService {
     }
     
     private handleError(error: any): Promise<any> {
-        console.log("Error!!!!!");
         console.error('An error occurred', error); // for demo purposes only
         return Promise.reject(error.message || error);
     }

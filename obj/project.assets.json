@@ -1453,6 +1453,23 @@
           "lib/netstandard1.4/Microsoft.Azure.KeyVault.WebKey.dll": {}
         }
       },
+      "Microsoft.Azure.Search/3.0.4": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Rest.ClientRuntime": "[2.3.7, 3.0.0)",
+          "Microsoft.Rest.ClientRuntime.Azure": "[3.3.6, 4.0.0)",
+          "Microsoft.Spatial": "7.2.0",
+          "NETStandard.Library": "1.6.1",
+          "Newtonsoft.Json": "9.0.1",
+          "System.Net.Http": "4.3.0"
+        },
+        "compile": {
+          "lib/netstandard1.4/Microsoft.Azure.Search.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.4/Microsoft.Azure.Search.dll": {}
+        }
+      },
       "Microsoft.CodeAnalysis.Analyzers/1.1.0": {
         "type": "package"
       },
@@ -2618,6 +2635,44 @@
         },
         "runtime": {
           "lib/netstandard1.4/Microsoft.Rest.ClientRuntime.Azure.dll": {}
+        }
+      },
+      "Microsoft.Spatial/7.2.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard1.1/Microsoft.Spatial.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.1/Microsoft.Spatial.dll": {}
+        },
+        "resource": {
+          "lib/netstandard1.1/de/Microsoft.Spatial.resources.dll": {
+            "locale": "de"
+          },
+          "lib/netstandard1.1/es/Microsoft.Spatial.resources.dll": {
+            "locale": "es"
+          },
+          "lib/netstandard1.1/fr/Microsoft.Spatial.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/netstandard1.1/it/Microsoft.Spatial.resources.dll": {
+            "locale": "it"
+          },
+          "lib/netstandard1.1/ja/Microsoft.Spatial.resources.dll": {
+            "locale": "ja"
+          },
+          "lib/netstandard1.1/ko/Microsoft.Spatial.resources.dll": {
+            "locale": "ko"
+          },
+          "lib/netstandard1.1/ru/Microsoft.Spatial.resources.dll": {
+            "locale": "ru"
+          },
+          "lib/netstandard1.1/zh-Hans/Microsoft.Spatial.resources.dll": {
+            "locale": "zh-Hans"
+          },
+          "lib/netstandard1.1/zh-Hant/Microsoft.Spatial.resources.dll": {
+            "locale": "zh-Hant"
+          }
         }
       },
       "Microsoft.VisualStudio.Web.BrowserLink/2.0.0": {
@@ -5781,6 +5836,21 @@
         "microsoft.azure.keyvault.webkey.nuspec"
       ]
     },
+    "Microsoft.Azure.Search/3.0.4": {
+      "sha512": "AsjhMYLHqtwHEVSmQP8Z5gySDJNjJRkNMdpW6JkXxR54aDeAyLcFQSWUhcFg8PEzOzK5xNNRKwRlA6+xrx3DHQ==",
+      "type": "package",
+      "path": "microsoft.azure.search/3.0.4",
+      "files": [
+        "lib/net452/Microsoft.Azure.Search.dll",
+        "lib/net452/Microsoft.Azure.Search.runtimeconfig.json",
+        "lib/net452/Microsoft.Azure.Search.xml",
+        "lib/netstandard1.4/Microsoft.Azure.Search.dll",
+        "lib/netstandard1.4/Microsoft.Azure.Search.runtimeconfig.json",
+        "lib/netstandard1.4/Microsoft.Azure.Search.xml",
+        "microsoft.azure.search.3.0.4.nupkg.sha512",
+        "microsoft.azure.search.nuspec"
+      ]
+    },
     "Microsoft.CodeAnalysis.Analyzers/1.1.0": {
       "sha512": "HS3iRWZKcUw/8eZ/08GXKY2Bn7xNzQPzf8gRPHGSowX7u7XXu9i9YEaBeBNKUXWfI7qjvT2zXtLUvbN0hds8vg==",
       "type": "package",
@@ -7305,6 +7375,37 @@
         "lib/netstandard1.4/Microsoft.Rest.ClientRuntime.Azure.xml",
         "microsoft.rest.clientruntime.azure.3.3.7.nupkg.sha512",
         "microsoft.rest.clientruntime.azure.nuspec"
+      ]
+    },
+    "Microsoft.Spatial/7.2.0": {
+      "sha512": "qLZ+g9Bfn87Ui9Jbb5loO+5jYCPGlTlV+JowSXXUQmkspSNPoWkbsmLpulbMbNpnTOiBEf/ishpz5GmYi6cSCA==",
+      "type": "package",
+      "path": "microsoft.spatial/7.2.0",
+      "files": [
+        "lib/netstandard1.1/Microsoft.Spatial.dll",
+        "lib/netstandard1.1/Microsoft.Spatial.xml",
+        "lib/netstandard1.1/de/Microsoft.Spatial.resources.dll",
+        "lib/netstandard1.1/es/Microsoft.Spatial.resources.dll",
+        "lib/netstandard1.1/fr/Microsoft.Spatial.resources.dll",
+        "lib/netstandard1.1/it/Microsoft.Spatial.resources.dll",
+        "lib/netstandard1.1/ja/Microsoft.Spatial.resources.dll",
+        "lib/netstandard1.1/ko/Microsoft.Spatial.resources.dll",
+        "lib/netstandard1.1/ru/Microsoft.Spatial.resources.dll",
+        "lib/netstandard1.1/zh-Hans/Microsoft.Spatial.resources.dll",
+        "lib/netstandard1.1/zh-Hant/Microsoft.Spatial.resources.dll",
+        "lib/portable-net45+win8+wpa81/Microsoft.Spatial.dll",
+        "lib/portable-net45+win8+wpa81/Microsoft.Spatial.xml",
+        "lib/portable-net45+win8+wpa81/de/Microsoft.Spatial.resources.dll",
+        "lib/portable-net45+win8+wpa81/es/Microsoft.Spatial.resources.dll",
+        "lib/portable-net45+win8+wpa81/fr/Microsoft.Spatial.resources.dll",
+        "lib/portable-net45+win8+wpa81/it/Microsoft.Spatial.resources.dll",
+        "lib/portable-net45+win8+wpa81/ja/Microsoft.Spatial.resources.dll",
+        "lib/portable-net45+win8+wpa81/ko/Microsoft.Spatial.resources.dll",
+        "lib/portable-net45+win8+wpa81/ru/Microsoft.Spatial.resources.dll",
+        "lib/portable-net45+win8+wpa81/zh-Hans/Microsoft.Spatial.resources.dll",
+        "lib/portable-net45+win8+wpa81/zh-Hant/Microsoft.Spatial.resources.dll",
+        "microsoft.spatial.7.2.0.nupkg.sha512",
+        "microsoft.spatial.nuspec"
       ]
     },
     "Microsoft.VisualStudio.Web.BrowserLink/2.0.0": {
@@ -12529,6 +12630,7 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.0": [
       "Microsoft.AspNetCore.All >= 2.0.0",
+      "Microsoft.Azure.Search >= 3.0.4",
       "Microsoft.EntityFrameworkCore.Design >= 2.0.1",
       "Microsoft.EntityFrameworkCore.SqlServer >= 2.0.1",
       "Microsoft.NETCore.App >= 2.0.0",
@@ -12584,6 +12686,10 @@
           "Microsoft.AspNetCore.All": {
             "target": "Package",
             "version": "2.0.0"
+          },
+          "Microsoft.Azure.Search": {
+            "target": "Package",
+            "version": "3.0.4"
           },
           "Microsoft.EntityFrameworkCore.Design": {
             "suppressParent": "All",

@@ -9,13 +9,15 @@ import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
 import { SearchComponent } from './components/search/search.component';
 import { CommonServiceModule } from './common/common.module';
+import { GalleryComponent } from './components/gallery/gallery.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         NavMenuComponent,
         HomeComponent,
-        SearchComponent
+        SearchComponent,
+        GalleryComponent
     ],
     imports: [
         CommonModule,

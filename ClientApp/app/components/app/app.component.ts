@@ -6,4 +6,7 @@ import { Component } from '@angular/core';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+    constructor() {
+        console.log("App Component > constructor");
+    }
 }
